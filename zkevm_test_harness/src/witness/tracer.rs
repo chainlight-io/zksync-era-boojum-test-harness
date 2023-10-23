@@ -266,7 +266,11 @@ impl VmWitnessTracer<8, EncodingModeProduction> for WitnessTracer {
         self.current_cycle_counter += 1;
     }
 
-    fn end_execution_cycle(&mut self, _current_state: &VmLocalState) {
+    fn end_execution_cycle(&mut self, vm_local_state: &VmLocalState) {
+        dbg!(vm_local_state.registers[0].value);
+        dbg!(vm_local_state.registers[1].value);
+        dbg!(vm_local_state.registers[2].value);
+        dbg!(vm_local_state.registers[3].value);
         // dbg!(&self.sponge_busy_range);
         if !self.sponge_busy_range.is_empty() {
             for i in 0..NUM_SPONGES {
