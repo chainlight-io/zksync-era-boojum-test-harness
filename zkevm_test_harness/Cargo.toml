@@ -1,0 +1,50 @@
+[package]
+name = "zkevm_test_harness"
+version = "1.4.0"
+edition = "2021"
+authors = ["Alex Vlasov <alex.m.vlasov@gmail.com>", "Konstantin Panarin <kp@matterlabs.dev>"]
+
+resolver = "2"
+
+# [[bin]]
+# name = "circuit_limit_estimator"
+# path = "src/circuit_limit_estimator/main.rs"
+
+# [[bin]]
+# name = "circuit_synthesis_performance_test"
+# path = "src/circuit_synthesis_performance_test/main.rs"
+
+ [[bin]]
+ name = "geometry_config_generator"
+ path = "src/geometry_config_generator/main.rs"
+
+[dependencies]
+circuit_definitions = {path = "./circuit_definitions"}
+
+zkevm-assembly = {git = "https://github.com/matter-labs/era-zkEVM-assembly.git", branch = "v1.3.2"}
+
+rand = "0.4"
+rayon = "*"
+derivative = "*"
+hex = "*"
+serde = {version = "1", features = ["derive"]}
+serde_json = "1.0"
+crossbeam = "0.8"
+tracing = { version= "0.1.26" }
+bincode = "*"
+test-log = "*"
+env_logger = "*"
+smallvec = "*"
+structopt = "0.3.26"
+codegen = "0.2.0"
+
+[profile.dev]
+strip = "debuginfo"
+lto = "off"
+
+[profile.release]
+debug = false
+lto = "off"
+
+[profile.bench]
+debug = false

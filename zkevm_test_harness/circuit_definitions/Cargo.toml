@@ -1,0 +1,22 @@
+[package]
+name = "circuit_definitions"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+zk_evm = {path = "../../zk_evm"}
+zkevm_circuits = {path = "../../zkevm_circuits", features = ["verbose_circuits"]}
+
+snark_wrapper = {git = "https://github.com/matter-labs/snark-wrapper.git", branch = "main"}
+# snark_wrapper = {path = "../../snark_wrapper"}
+
+derivative = "*"
+serde = {version = "1", features = ["derive"]}
+crossbeam = "0.8"
+
+[features]
+default = []
+log_tracing = ["zkevm_circuits/log_tracing"]
